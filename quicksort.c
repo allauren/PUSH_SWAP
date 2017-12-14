@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:51:35 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/14 20:14:35 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 00:26:36 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_partitionb(t_2pile *pile, int key, int size)
 
 void	ft_reinit(t_2pile *pile, int len)
 {
-	while (len-- && ft_set_values("pa\n", 0))
+	while (len-- && ft_set_values("pb\n", 0))
 		ft_pushb(pile);
 }
 
@@ -51,22 +51,21 @@ void	ft_2sortb(t_2pile *pile, int lenb)
 	int		len;
 
 	len = ft_2listsize(PILEB);
-//	while(lenb)
-//	{
-	if(len > 4)
+	if(len > 3)
 	{
-		ft_partitionb (pile, ft_find_pivot(PILEB, len, 2), len);
+		ft_partitionb (pile, ft_find_pivot(PILEB, len, 4), len);
 		ft_2sortb(pile, lenb);
 	}
 	else
 	{
+//	ft_print_pile(pile);
 		sort_small(pile, len);
 		lenb -= len;
 		ft_reinit(pile, lenb);
-		//ft_print_pile(pile);
-	//	ft_printf("\n\n%d\n", len);
+//	ft_print_pile(pile);
+		if (lenb)
+		ft_2sortb(pile, lenb);
 	}
-//	}
 }
 
 void	quick2sort(t_2pile *pile, int key,int len)
@@ -80,9 +79,9 @@ void	quick2sort(t_2pile *pile, int key,int len)
 	ft_partitiona(pile, key, len);
 	lena = ft_2listsize(PILEA);
 	lenb = ft_2listsize(PILEB);
-//	while (!ft_is_finish(PILEA) && PILEB)
-//	{
 	ft_2sortb(pile, lenb);
+	ft_reinit(pile, lena);
+	ft_2sortb(pile, lena);
 
 
 

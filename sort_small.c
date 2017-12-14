@@ -6,54 +6,76 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:32:25 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/14 20:13:17 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 00:26:15 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_is_reverse(t_2pile *pile)
+int		ft_is_reverse(t_2list *pile)
 {
-	while (PILEB && PILEBNEX)
+	while (pile && pile->next)
 	{
-		if (PILEBVAL > PILEBNEX->value)
+		if (pile->value < pile->next->value)
 			return(0);
-		PILEB = PILEBNEX;
+		pile = pile->next;
 	}
 	return (1);
 }
 
-void	ft_checkswapb(t_2pile *pile)
+t_2pile	*ft_checkswapb(t_2pile *pile)
 {
+	///ft_printf("%d et next %d", PILEBVAL, PILEBNEX->value);
 	if(PILEBVAL < PILEBNEX->value && PILEAVAL > PILEANEX->value
 			&& ft_set_values("ss\n", 0))
 	{
-		ft_swap(PILEA, PILEANEX);
-		ft_swap(PILEB, PILEBNEX);
+		PILEA = ft_swap(PILEA, PILEANEX);
+		PILEB = ft_swap(PILEB, PILEBNEX);
 	}
 	else if (PILEBVAL < PILEBNEX->value && ft_set_values("sb\n", 0))
-		ft_swap(PILEB, PILEBNEX);
+		PILEB = ft_swap(PILEB, PILEBNEX);
+	//ft_printf("PILEB %d et PILEBNEX %d", PILEBVAL, PILEBNEX->value);
+	return (pile);
 }
-void	ft_pushrota(t_2pile *pile, int len)
-{
-	int len2;
 
-	len2 = len;
-	while (len-- && ft_set_values("pa\n", 0))
+int	ft_pushrota(t_2pile *pile, int len)
+{
+	while (PILEB && ft_set_values("pa\n", 0))
 		ft_pusha(pile);
-	while(len2-- && ft_set_values("ra\n", 0))
-			PILEA = ft_2listrotate(PILEA);
+	while (len-- && ft_set_values("ra\n", 0))
+		PILEA = ft_2listrotate(PILEA);
+	return (1);
 }
 
 void	ft_sort2(t_2pile *pile, int len)
 {
-	ft_checkswapb(pile);
+	pile = ft_checkswapb(pile);
+	ft_pushrota(pile, len);
+}
+
+void	ft_sort3(t_2pile *pile, int len)
+{
+	if (ft_is_reverse(PILEBNEX) && PILEBVAL > ft_2listtail(PILEB)->value
+			&& ft_set_values("rb\n", 0)&& ft_printf("je pass la 3"))
+		pile = ft_checkswapb(pile);
+	else if (!ft_is_reverse(PILEBNEX) && PILEBVAL > ft_2listtail(PILEB)->value)
+		pile = ft_checkswapb(pile);
+	else if (!ft_is_reverse(PILEBNEX) && ft_set_values("rrb\n", 0))
+	{
+		PILEB = ft_2listrevrotate(PILEB);
+		pile = ft_checkswapb(pile);
+	}
+	else if (ft_set_values("rb\n", 0))
+		PILEB = ft_2listrotate(PILEB);
 	ft_pushrota(pile, len);
 }
 
 void	sort_small(t_2pile *pile, int size)
 {
-	if (size == 1 || ft_is_reverse(pile))
+	if ((size == 1 || ft_is_reverse(PILEB)) && ft_pushrota(pile, size))
 		return;
-	ft_sort2(pile, size);
+	if (size == 2)
+		ft_sort2(pile, size);
+	else
+		ft_sort3(pile, size);
 }

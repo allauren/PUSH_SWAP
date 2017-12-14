@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 09:07:03 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/14 17:53:50 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 00:18:27 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ t_2list		*ft_swap(t_2list *begin, t_2list *next)
 	next->head = NULL;
 	next->next = begin;
 	begin->next = temp;
-	temp->head = begin;
+	if (temp)
+		temp->head = begin;
 	begin->head = next;
 	index = begin->index;
 	begin->index = next->index;
