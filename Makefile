@@ -6,14 +6,15 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/12 19:50:35 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/14 19:49:46 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS1 = insertion_sort.c doublelist.c list2del.c pushswapcommand.c \
-		push_check.c push_swap.c utilspsw.c quicksort.c easy_split.c
+		push_check.c push_swap.c utilspsw.c quicksort.c easy_split.c\
+		utilpresort.c sort_small.c
 SRCS2 = insertion_sort.c checker.c doublelist.c list2del.c pushswapcommand.c \
-		push_check.c utilspsw.c
+		push_check.c utilspsw.c quicksort.c utilpresort.c sort_small.c
 CFLAGS =-g3 -c -Wall -Wextra -Werror
 FLAGS  = -g3  -Wall -Wextra 
 INCLUDES = INCLUDES

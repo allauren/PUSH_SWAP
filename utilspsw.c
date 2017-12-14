@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 13:02:40 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/13 14:21:51 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:50:50 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ t_2list	*ft_fill(t_2list *pilea, int *tab, int i)
 	int		j;
 
 	j = -1;
-
 	while (++j < i)
 	{
-		pilea = ft_2listfront(pilea,ft_2list_new(tab[j]));
+		pilea = ft_2listfront(pilea,ft_2list_new(tab[j], j + 1));
 	}
 	return (pilea);
 }
@@ -54,6 +53,7 @@ int		ft_cut(int ac, char **av)
 	ft_memdel((void**)pab);
 	return(j);
 }
+
 int		ft_is_redundant(char *str1, char **tab)
 {
 	int i;
@@ -79,7 +79,37 @@ int		ft_is_redundant(char *str1, char **tab)
 	else
 		return (0);
 }
+char		*ft_realloc(char *str, int size)
+{
+	char	*tmp;
 
+	tmp = str;
+	if(!(str = ft_memalloc(size)))
+		ft_exit();
+	if (tmp)
+	{
+		str = ft_strcat(str, tmp);
+		ft_strdel(&tmp);
+	}
+	return (str);
+}
+int		ft_set_values(char* ptr, int taille)
+{
+	static char	*str = NULL;
+	static int	i = 1;
+	int			len;
+
+	len =  str ? ft_strlen(str) : 1;
+	if ((!str && taille != -1) || (i * 4096 - len < 5))
+		str = ft_realloc(str, ++i * 4096);
+	if (ptr)
+		ft_strcat(str, ptr);
+	else
+	{
+		ft_printf("%s", str);
+	}
+	return (1);
+}
 char	*ft_rotate(char **tab, int taille, int len)
 {
 	int		count;
@@ -147,22 +177,4 @@ char	*ft_clean(char	*str, int taille)
 	return (str);
 }
 
-int		ft_set_values(char* str, int taille)
-{
-	static char	*ptr = NULL;
-	char		*temp;
 
-	temp = ptr;
-	if (str)
-	{
-		if(!(ptr =  ptr ? ft_strjoin(ptr, str) : ft_strdup(str)))
-			ft_exit();
-	}
-	else
-	{
-		ptr = ft_clean(ptr, taille);
-		ft_printf("%s", ptr);
-	}
-	ft_memdel((void**)&temp);
-	return (1);
-}

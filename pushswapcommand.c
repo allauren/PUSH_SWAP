@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 09:07:03 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/12 18:43:20 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:53:50 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ t_2list		*ft_2listrevrotate(t_2list *begin)
 {
 	t_2list	*next;
 	t_2list	*tail;
+	int		index;
 
 	if (!begin || !begin->next)
 		return (begin);
 	begin = ft_2listhead(begin);
+	index = begin->index;
 	tail = ft_2listtail(begin);
 	next = tail->head;
 	begin->head = tail;
@@ -49,6 +51,7 @@ t_2list		*ft_2listrotate(t_2list *begin)
 t_2list		*ft_swap(t_2list *begin, t_2list *next)
 {
 	t_2list	*temp;
+	int		index;
 
 	if (!next)
 		return (begin);
@@ -58,6 +61,9 @@ t_2list		*ft_swap(t_2list *begin, t_2list *next)
 	begin->next = temp;
 	temp->head = begin;
 	begin->head = next;
+	index = begin->index;
+	begin->index = next->index;
+	next->index = index;
 	return (next);
 }
 

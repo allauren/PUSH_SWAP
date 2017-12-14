@@ -6,19 +6,20 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:37:23 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/12 19:57:17 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:53:09 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_2list		*ft_2list_new(int value)
+t_2list		*ft_2list_new(int value, int index)
 {
 	t_2list	*new;
 
 	if (!(new = (t_2list*)malloc(sizeof(t_2list))))
 		return (NULL);
 	new->value = value;
+	new->index = index;
 	new->head = NULL;
 	new->next = NULL;
 	return (new);

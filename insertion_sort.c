@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:07:53 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/13 14:14:51 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:54:50 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,59 @@
 /*
  *insertion_sort avec un temps execution de ??
  */
+ 
+int		ft_count_index(t_2list *pilea, int value)
+{
+	int count = 0;
+
+	pilea = ft_2listhead(pilea);
+	while(pilea->value != value && ++count)
+		pilea = pilea->next;
+	return(count);
+}
+
+
+t_2pile	*ft_place_value(t_2pile *pile, int key, int taille)
+{
+	int		index;
+
+	index = ft_count_index(PILEA, key);
+	ft_printf("index %d \n", key);
+	PILEA = ft_2listhead(PILEA);
+	if (index > taille / 2)
+	{
+		ft_printf("revrotate");
+		while (PILEAVAL != key && ft_set_values("rra\n", 0))
+			PILEA = ft_2listrevrotate(PILEA);
+	ft_print_pile(pile);
+		ft_set_values("sa\n", 0);
+		ft_swap(PILEA, PILEANEX);
+	}
+	else 
+	{
+		while (PILEAVAL != key && ft_set_values("ra\n", 0))
+			PILEA = ft_2listrotate(PILEA);
+		ft_set_values("sa\n", 0);
+		ft_swap(PILEA, PILEANEX);
+	}
+	return(pile);
+}
+
 void		insertion_sort(t_2pile *pile, int taille)
 {
-	(void) taille;
-	int	count_push = 0;
-	int	count_rotate = 0;
-	int	key = 0;
-	t_2list	*temp;
+	int key;
 
-	pile->pilea = ft_2listhead(pile->pilea);
-	temp = pile->pilea->next;
-	while (temp)
+	while(!ft_is_finish(PILEA))
 	{
-		pile->pilea = ft_2listhead(pile->pilea);
-		key = temp->value;
-		temp = temp->next;
-		while(pile->pilea->value != key)
-		{
-			if (pile->pilea->value < key && ++count_rotate && ft_set_values("ra\n", 0))
-				pile->pilea = ft_2listrotate(pile->pilea);
-			else if(++count_push && ft_set_values("pb\n", 0))
-				ft_pushb(pile);
-		}
-		if (count_push && ++count_rotate && ft_set_values("ra\n", 0))
-			pile->pilea = ft_2listrotate(pile->pilea);
-		while (count_push && ft_set_values("pa\n", 0))
-		{
-			ft_pusha(pile);
-			count_push--;
-		}
-		while(count_rotate && ft_set_values("rra\n", 0))
-		{
-			pile->pilea = ft_2listrevrotate(pile->pilea);
-			count_rotate--;
-		}
+//	ft_print_pile(pile);
+		while(PILEAINF && PILEANEX)
+			PILEA = PILEANEX;
+		key = PILEAVAL;
+		pile = ft_place_value(pile, key, taille);
+		//ft_print_pile(pile);
+		while(ft_2listhead(PILEA)->value > ft_2listtail(PILEA)->value
+				&& ft_set_values("rra\n", 0))
+			PILEA = ft_2listrevrotate(PILEA);
 	}
 }
 
