@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:32:25 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 00:26:15 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 02:51:45 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,29 @@ void	ft_sort2(t_2pile *pile, int len)
 
 void	ft_sort3(t_2pile *pile, int len)
 {
-	if (ft_is_reverse(PILEBNEX) && PILEBVAL > ft_2listtail(PILEB)->value
-			&& ft_set_values("rb\n", 0)&& ft_printf("je pass la 3"))
+	if (ft_is_reverse(PILEBNEX) && PILEBVAL > ft_2listtail(PILEB)->value)
 		pile = ft_checkswapb(pile);
-	else if (!ft_is_reverse(PILEBNEX) && PILEBVAL > ft_2listtail(PILEB)->value)
-		pile = ft_checkswapb(pile);
-	else if (!ft_is_reverse(PILEBNEX) && ft_set_values("rrb\n", 0))
+	else if (!ft_is_reverse(PILEBNEX) 
+			&& ft_2listhead(PILEB)->value > ft_2listtail(PILEB)->value
+			&& ft_set_values("rrb\n", 0))
 	{
 		PILEB = ft_2listrevrotate(PILEB);
 		pile = ft_checkswapb(pile);
 	}
+	else if (PILEBVAL > PILEBNEX->value && ft_set_values("rrb\n", 0))
+		PILEB = ft_2listrevrotate(PILEB);
 	else if (ft_set_values("rb\n", 0))
+	{
 		PILEB = ft_2listrotate(PILEB);
+		pile = ft_checkswapb(pile);
+	}
 	ft_pushrota(pile, len);
 }
 
 void	sort_small(t_2pile *pile, int size)
 {
+	if (!size)
+		return;
 	if ((size == 1 || ft_is_reverse(PILEB)) && ft_pushrota(pile, size))
 		return;
 	if (size == 2)

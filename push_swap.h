@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/14 20:04:29 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 02:26:17 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define PUSH_SWAP_H
 #include "lib/printf.h"
 # define PILEAINF pile->pilea->value < pile->pilea->next->value
-# define PILEASUP pile->pilea->value > pile->pilea->next->value
+# define PILEBINF pile->pileb->value < pile->pileb->next->value
+# define pilebSUP pile->pileb->value > pile->pileb->next->value
 # define PILEA pile->pilea
 # define PILEB pile->pileb
 # define PILEAVAL PILEA->value

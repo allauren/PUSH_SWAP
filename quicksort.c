@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:51:35 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 00:26:36 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 03:08:49 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	quick2sort(t_2pile *pile, int key,int len)
 	ft_2sortb(pile, lenb);
 	ft_reinit(pile, lena);
 	ft_2sortb(pile, lena);
+ft_print_pile(pile);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 00:22:27 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 03:08:29 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,40 @@ int			main(int argc, char *argv[])
 //	insertion_sort(&pile, i);
 	quick2sort(&pile, 0, i);
 //	ft_easy_sort(&pile, i);
-//	ft_set_values(NULL, -1);
-	ft_print_pile(&pile);
+ ft_set_values(NULL, -1);
+ft_print_pile(&pile);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
 	return 0;
 }
+/*
+int		ft_is_smallest(t_2list *pile)
+{
+	int key;
+
+	if (pile)
+		key = pile->value;
+	while (pile)
+	{
+		pile = pile->next;
+		if (pile && pile->value < key)
+			return (0);
+	}
+	return (1);
+}
+t_2pile		*ft_is_opti(t_2pile *pile, int *lenb)
+{
+	int		i;
+
+	i = 0;
+	ft_print_pile(pile);
+	while(PILEB && PILEBNEX && ++i < 4 && ft_is_smallest(PILEB))
+		PILEB = PILEBNEX;
+	PILEB = ft_2listhead(PILEB);
+	sort_small(pile, i);
+	ft_print_pile(pile);
+	*lenb -= i;
+	return(pile);
+}
+
+*/
