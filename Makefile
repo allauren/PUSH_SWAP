@@ -6,16 +6,16 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/15 06:10:21 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/15 07:11:49 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS1 = insertion_sort.c doublelist.c list2del.c pushswapcommand.c \
-		push_check.c push_swap.c utilspsw.c quicksort.c easy_split.c\
-		utilpresort.c sort_small.c checkpsw.c
-SRCS2 = insertion_sort.c checker.c doublelist.c list2del.c pushswapcommand.c \
+SRCS1 =  doublelist.c list2del.c pushswapcommand.c \
+		push_check.c push_swap.c utilspsw.c quicksort.c \
+		utilpresort.c sort_small.c checkpsw.c push_check2.c
+SRCS2 =  checker.c doublelist.c list2del.c pushswapcommand.c \
 		push_check.c utilspsw.c quicksort.c\
-		utilpresort.c sort_small.c checkpsw.c
+		utilpresort.c sort_small.c checkpsw.c push_check2.c
 CFLAGS =-g3 -c -Wall -Wextra -Werror
 FLAGS  = -g3  -Wall -Wextra 
 INCLUDES = INCLUDES

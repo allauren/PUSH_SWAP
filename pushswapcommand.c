@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 09:07:03 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 00:18:27 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 07:11:53 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_2list		*ft_2listrotate(t_2list *begin)
 {
 	t_2list	*tail;
 	t_2list	*head;
-	
+
 	if (!begin || !begin->next)
 		return (begin);
 	begin = ft_2listhead(begin);
@@ -72,8 +72,8 @@ void		ft_pushb(t_2pile *pile)
 {
 	t_2list		*nexta;
 
-	if(!pile->pilea)
-		return;
+	if (!pile->pilea)
+		return ;
 	pile->pilea = pile->pilea ? ft_2listhead(pile->pilea) : NULL;
 	pile->pileb = pile->pileb ? ft_2listhead(pile->pileb) : NULL;
 	nexta = pile->pilea->next ? pile->pilea->next : NULL;
@@ -91,8 +91,8 @@ void		ft_pusha(t_2pile *pile)
 {
 	t_2list		*nextb;
 
-	if(!pile->pileb)
-		return;
+	if (!pile->pileb)
+		return ;
 	pile->pilea = pile->pilea ? ft_2listhead(pile->pilea) : NULL;
 	pile->pileb = pile->pileb ? ft_2listhead(pile->pileb) : NULL;
 	nextb = pile->pileb->next ? pile->pileb->next : NULL;

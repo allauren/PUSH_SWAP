@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chechpushswap.c                                    :+:      :+:    :+:   */
+/*   push_check2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:55:58 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 06:12:25 by allauren         ###   ########.fr       */
+/*   Created: 2017/12/15 07:10:01 by allauren          #+#    #+#             */
+/*   Updated: 2017/12/15 07:10:57 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-int		ft_is_finish(t_2list *pilea)
+void		ft_exit(void)
+{
+	ft_alexis();
+	exit(-1);
+}
+
+void		ft_is_sort(t_2list *pilea)
 {
 	int		temp;
 
@@ -24,22 +31,14 @@ int		ft_is_finish(t_2list *pilea)
 			pilea = pilea->next;
 			if (temp > pilea->value)
 			{
-				return (0);
+				ft_printf("KO\n");
+				return ;
 			}
 		}
 		else
 			break ;
 	}
-	return (1);
+	ft_printf("OK\n");
 }
 
-int		ft_is_reverse(t_2list *pile)
-{
-	while (pile && pile->next)
-	{
-		if (pile->value < pile->next->value)
-			return (0);
-		pile = pile->next;
-	}
-	return (1);
-}
+

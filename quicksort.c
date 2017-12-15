@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:51:35 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 06:07:47 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 07:05:45 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		ft_partitiona(t_2pile *pile, int key, int size)
 	while (PILEA && ++i < size)
 		if (PILEAVAL < key && ft_set_values("pb\n", 0))
 			ft_pushb(pile);
-		else if(ft_set_values("ra\n", 0))
-			PILEA =ft_2listrotate(PILEA); 
+		else if (ft_set_values("ra\n", 0))
+			PILEA = ft_2listrotate(PILEA);
 	return (key);
 }
 
@@ -35,8 +35,8 @@ int		ft_partitionb(t_2pile *pile, int key, int size)
 	while (++i < size && PILEB)
 		if (PILEBVAL > key && ft_set_values("pa\n", 0))
 			ft_pusha(pile);
-		else if(ft_set_values("rb\n", 0))
-			PILEB = ft_2listrotate(PILEB); 
+		else if (ft_set_values("rb\n", 0))
+			PILEB = ft_2listrotate(PILEB);
 	return (i);
 }
 
@@ -57,9 +57,9 @@ void	ft_2sortb(t_2pile *pile, int lenb, int *tab)
 	len = ft_2listsize(PILEB);
 	while (tab[i])
 		i++;
-	if(len > 3 && !ft_is_reverse(PILEB))
+	if (len > 3 && !ft_is_reverse(PILEB))
 	{
-		ft_partitionb (pile, ft_find_pivot(PILEB, len, 2), len);
+		ft_partitionb(pile, ft_find_pivot(PILEB, len, 2), len);
 		tab[i] = ft_2listsize(PILEA) - lena;
 		ft_2sortb(pile, lenb, tab);
 	}
@@ -70,11 +70,11 @@ void	ft_2sortb(t_2pile *pile, int lenb, int *tab)
 		ft_reinit(pile, tab[i - 1]);
 		tab[i - 1] = 0;
 		if (lenb)
-		ft_2sortb(pile, lenb, tab);
+			ft_2sortb(pile, lenb, tab);
 	}
 }
 
-void	quick2sort(t_2pile *pile, int key,int len)
+void	quick2sort(t_2pile *pile, int key, int len)
 {
 	int lena;
 	int lenb;
@@ -82,12 +82,12 @@ void	quick2sort(t_2pile *pile, int key,int len)
 
 	lena = ft_2listsize(PILEA);
 	if (!(tab = malloc(sizeof(int) * lena)))
-			ft_exit();
+		ft_exit();
 	ft_bzero(tab, lena);
 	if (!key)
 		key = ft_find_pivot(PILEA, len, 2);
-	if(ft_is_finish(pile->pilea))
-		return;
+	if (ft_is_finish(pile->pilea))
+		return ;
 	ft_partitiona(pile, key, len);
 	lena = ft_2listsize(PILEA);
 	lenb = ft_2listsize(PILEB);
