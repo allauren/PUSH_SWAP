@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 06:01:11 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 16:42:11 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			main(int argc, char *argv[])
 	}
 	pile.pilea = ft_fill(pile.pilea, tab, i);
 	ft_memdel((void**)&tab);
+
 //	insertion_sort(&pile, i);
 	quick2sort(&pile, 0, i);
 //	ft_easy_sort(&pile, i);
@@ -37,6 +38,8 @@ int			main(int argc, char *argv[])
 //ft_print_pile(&pile);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
+	//while(1);
+
 	return 0;
 }
 /*

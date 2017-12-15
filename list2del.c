@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 09:12:17 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/12 18:43:19 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 08:22:38 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void		ft_2listdel(t_2list *begin)
 	prov = NULL;
 	if (!begin)
 		return ;
-	if (begin->head)
-		prov = begin->head;
-	if (prov)
-		prov->next = begin->next;
 	begin->next = NULL;
 	begin->head = NULL;
 	ft_memdel((void**)&begin);

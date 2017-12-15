@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 08:10:37 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 06:14:23 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 16:50:10 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int			main(int argc, char *argv[])
 	ft_readpsw(&pile);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
+
 	return (0);
 }

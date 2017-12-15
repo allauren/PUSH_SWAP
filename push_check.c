@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 07:11:51 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:46:36 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int			ft_checker(int argc, char **argv, int *tab)
 	int		k;
 	char	**pab;
 
-	pab = NULL;
 	i = argc;
 	j = 0;
-	while (--i >= 1 && ((k = 0) + 1))
+	while (--i >= 1 && ((pab = NULL) + 1))
 	{
-		pab = ft_strsplit(argv[i], ' ');
+		if (((k = 0) + 1) && !(pab = ft_strsplit(argv[i], ' ')))
+			ft_exit();
 		while (pab[k])
 			k++;
 		while (--k > -1)
@@ -51,7 +51,7 @@ int			ft_checker(int argc, char **argv, int *tab)
 				return (0);
 			j += 1 + ft_memdel((void**)&pab[k]);
 		}
-		ft_memdel((void**)pab);
+		free(pab);
 	}
 	return (1);
 }
@@ -100,7 +100,6 @@ t_2pile		*ft_orders(char *line, t_2pile *pile)
 		pile->pilea = ft_2listrevrotate(pile->pilea);
 	if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 		pile->pileb = ft_2listrevrotate(pile->pileb);
-	ft_memdel((void**)&line);
 	return (pile);
 }
 
@@ -112,7 +111,9 @@ void		ft_readpsw(t_2pile *pile)
 	while (get_next_line(0, &line))
 	{
 		pile = ft_orders(line, pile);
+		ft_memdel((void**)&line);
 	}
+	ft_memdel((void**)&line);
 	if (!pile->pileb)
 		ft_is_sort(pile->pilea);
 	else

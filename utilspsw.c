@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 13:02:40 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 07:00:19 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:45:59 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int			ft_cut(int ac, char **av)
 			k++;
 			j++;
 		}
-		free(pab[k]);
-		ft_memdel((void**)pab);
+		free(pab);
+		pab = NULL;
 	}
-	ft_memdel((void**)pab);
 	return (j);
 }
 

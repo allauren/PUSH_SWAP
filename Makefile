@@ -6,7 +6,7 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/15 07:11:49 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/15 08:32:29 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS2 =  checker.c doublelist.c list2del.c pushswapcommand.c \
 		push_check.c utilspsw.c quicksort.c\
 		utilpresort.c sort_small.c checkpsw.c push_check2.c
 CFLAGS =-g3 -c -Wall -Wextra -Werror
-FLAGS  = -g3  -Wall -Wextra 
+FLAGS  = -g3  -Wall -Wextra# -fsanitize=address
 INCLUDES = INCLUDES
 CC = gcc
 LIBOPTIMIZER = ranlib
