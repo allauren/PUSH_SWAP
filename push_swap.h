@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 02:26:17 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 04:24:03 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct			s_2pile
 	t_2list	*pileb;
 }						t_2pile;
 
+int			ft_is_reverse(t_2list *pile);
 void		ft_2lstdelall(t_2list *begin);
 void		ft_easy_sort(t_2pile *pile, int i);
 int			ft_set_values(char* str, int taille);

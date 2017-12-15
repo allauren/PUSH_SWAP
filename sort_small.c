@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:32:25 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 02:51:45 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/15 03:39:17 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int		ft_is_reverse(t_2list *pile)
 t_2pile	*ft_checkswapb(t_2pile *pile)
 {
 	///ft_printf("%d et next %d", PILEBVAL, PILEBNEX->value);
-	if(PILEBVAL < PILEBNEX->value && PILEAVAL > PILEANEX->value
-			&& ft_set_values("ss\n", 0))
-	{
-		PILEA = ft_swap(PILEA, PILEANEX);
-		PILEB = ft_swap(PILEB, PILEBNEX);
-	}
-	else if (PILEBVAL < PILEBNEX->value && ft_set_values("sb\n", 0))
+	//if(PILEBVAL < PILEBNEX->value && PILEAVAL > PILEANEX->value
+	//		&& ft_set_values("ss\n", 0))
+	//{
+//		PILEA = ft_swap(PILEA, PILEANEX);
+//		PILEB = ft_swap(PILEB, PILEBNEX);
+//	}
+	if (PILEBVAL < PILEBNEX->value && ft_set_values("sb\n", 0))
 		PILEB = ft_swap(PILEB, PILEBNEX);
 	//ft_printf("PILEB %d et PILEBNEX %d", PILEBVAL, PILEBNEX->value);
 	return (pile);
