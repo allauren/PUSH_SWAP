@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 17:46:36 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/16 23:32:05 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void		ft_readpsw(t_2pile *pile)
 	while (get_next_line(0, &line))
 	{
 		pile = ft_orders(line, pile);
+//		ft_printf("\n%s\n", line);
+//		ft_print_pile(pile);
 		ft_memdel((void**)&line);
 	}
 	ft_memdel((void**)&line);

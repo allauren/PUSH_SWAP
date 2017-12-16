@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 07:16:15 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/16 06:06:03 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,17 @@ typedef struct			s_2pile
 	t_2list				*pileb;
 }						t_2pile;
 
+void					sort_tillfif(t_2pile *pile, int i);
 int						ft_is_reverse(t_2list *pile);
 void					ft_2lstdelall(t_2list *begin);
-void					ft_easy_sort(t_2pile *pile, int i);
 int						ft_set_values(char *str, int taille);
 int						ft_is_finish(t_2list *pilea);
 int						ft_2listsize(t_2list *begin);
 int						ft_cut(int ac, char **av);
+void					sort_smalla(t_2pile *pile, int size);
 void					ft_is_sort(t_2list *pilea);
+int						ft_is_nfinish(t_2list *pilea, int n);
+t_2pile					*ft_checkswapa(t_2pile *pile);
 t_2list					*ft_fill(t_2list *pilea, int *tab, int i);
 void					quick2sort(t_2pile *pile, int i, int taille);
 t_2list					*ft_2listrotate(t_2list *begin);
@@ -64,6 +67,7 @@ int						*ft_concattab(int *tab, t_2list *pile);
 void					insertion_sort(t_2pile *pile, int taille);
 int						*ft_concattab(int *tab, t_2list *pile);
 int						ft_find_pivot(t_2list *pile, int len, int div);
+void					ft_2sortb(t_2pile *pile, int lenb, int *tab);
 int						*ft_insertformed(int *tab, int len);
 void					sort_small(t_2pile *pile, int size);
 t_2list					*ft_2listrev(t_2list *begin);
@@ -71,6 +75,8 @@ t_2list					*ft_2list_new(int value, int index);
 t_2list					*ft_2listhead(t_2list *begin);
 t_2list					*ft_2listtail(t_2list *begin);
 void					ft_pushb(t_2pile *pile);
+void					ft_find_opti(int lenb, t_2pile *pile, int *tab, int i);
+void					ft_reinit(t_2pile *pile, int len);
 void					ft_pusha(t_2pile *pile);
 void					ft_exit(void);
 int						ft_ispresent(int *tab, int i);

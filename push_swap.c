@@ -6,11 +6,38 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 16:42:11 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/16 22:56:52 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		ft_check_algo(t_2pile *pile, int i)
+{
+	if (i > 3 && ft_is_nfinish(PILEA, i - 2)
+			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
+			&& ft_2listtail(PILEA)->head->value < ft_2listhead(PILEA)->value 
+			&& ft_set_values("rra\n", 0) && ft_set_values("rra\n", 0))
+	{
+		PILEA = ft_2listrevrotate(PILEA);
+		PILEA = ft_2listrevrotate(PILEA);
+		pile = ft_checkswapa(pile);
+	}
+	if (i > 3 && ft_is_nfinish(PILEA, i - 1)
+			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
+			&& ft_set_values("rra\n", 0))
+		PILEA = ft_2listrevrotate(PILEA);
+	if(!(ft_is_finish(pile->pilea)))
+	{
+	if (i < 4)
+		sort_smalla(pile, i);
+	else if (i > 6)
+		quick2sort(pile, 0, i);
+	else
+		sort_tillfif(pile, i);
+	}
+	ft_set_values(NULL, -1);
+}
 
 int			main(int argc, char *argv[])
 {
@@ -25,51 +52,13 @@ int			main(int argc, char *argv[])
 	if (!ft_checker(argc, argv, tab) || argc < 2)
 	{
 		ft_memdel((void**)&tab);
-		ft_printf("Error\n");
 		return (-1);
 	}
 	pile.pilea = ft_fill(pile.pilea, tab, i);
 	ft_memdel((void**)&tab);
-
-//	insertion_sort(&pile, i);
-	quick2sort(&pile, 0, i);
-//	ft_easy_sort(&pile, i);
- ft_set_values(NULL, -1);
-//ft_print_pile(&pile);
+	if(!(ft_is_finish(pile.pilea)))
+		ft_check_algo(&pile, i);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
-	//while(1);
-
 	return 0;
 }
-/*
-int		ft_is_smallest(t_2list *pile)
-{
-	int key;
-
-	if (pile)
-		key = pile->value;
-	while (pile)
-	{
-		pile = pile->next;
-		if (pile && pile->value < key)
-			return (0);
-	}
-	return (1);
-}
-t_2pile		*ft_is_opti(t_2pile *pile, int *lenb)
-{
-	int		i;
-
-	i = 0;
-	ft_print_pile(pile);
-	while(PILEB && PILEBNEX && ++i < 4 && ft_is_smallest(PILEB))
-		PILEB = PILEBNEX;
-	PILEB = ft_2listhead(PILEB);
-	sort_small(pile, i);
-	ft_print_pile(pile);
-	*lenb -= i;
-	return(pile);
-}
-
-*/
