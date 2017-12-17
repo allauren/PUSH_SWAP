@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 23:32:05 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 04:08:55 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,41 @@ int			ft_ispresent(int *tab, int i)
 	return (1);
 }
 
-int			ft_checker(int argc, char **argv, int *tab)
+int		ft_fullzero(char *str)
 {
+	int i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] != '0')
+			return (0);
+	return (1);
+}
+
+char	*ft_cleanstr(char* str)
+{
+	char	*ret;
 	int		i;
+
+	i = 0;
+	if (!(ret = ft_memalloc(ft_strlen(str) + 1)))
+		ft_exit();
+	if (str[i] == '-')
+		i++;
+	while (str[i] == '0')
+		i++;
+	ft_strcat(ret, &str[i]);
+	ft_strdel(&str);
+	return (ret);
+}
+
+//void	ft_checkvalvalid(
+
+int			ft_checker(int i, char **argv, int *tab)
+{
 	int		j;
 	int		k;
 	char	**pab;
-
-	i = argc;
 	j = 0;
 	while (--i >= 1 && ((pab = NULL) + 1))
 	{
@@ -44,10 +71,13 @@ int			ft_checker(int argc, char **argv, int *tab)
 			k++;
 		while (--k > -1)
 		{
-			if (!(tab[j] = ft_atoi(pab[k])) && pab[k][0] != '0')
+			if (!(tab[j] = ft_atoi(pab[k])) && !ft_fullzero(pab[k]))
 				return (0);
-			if (!(ft_ispresent(tab, j)) && ft_atoi(pab[k]) < 2147483647
-					&& ft_atoi(pab[k]) > -2147483648)
+			if (!ft_ispresent(tab, j)
+					|| ft_atoi(pab[k]) > 2147483647
+					|| ft_atoi(pab[k]) < -2147483648
+					|| (tab[j] && pab[k]
+					&& ft_strlen((pab[k] = ft_cleanstr(pab[k]))) > 10))
 				return (0);
 			j += 1 + ft_memdel((void**)&pab[k]);
 		}
@@ -84,22 +114,24 @@ void		ft_print_pile(t_2pile *pile)
 
 t_2pile		*ft_orders(char *line, t_2pile *pile)
 {
-	if ((!ft_strcmp(line, "sa") || !ft_strcmp(line, "ss")) && pile->pilea)
-		pile->pilea = ft_swap(pile->pilea, pile->pilea->next);
-	if ((!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss")) && pile->pileb)
-		pile->pileb = ft_swap(pile->pileb, pile->pileb->next);
-	if (!ft_strcmp(line, "pa"))
+	if ((!ft_strcmp(line, "sa") || !ft_strcmp(line, "ss")))
+		PILEA = PILEA ? ft_swap(PILEA, PILEANEX) : NULL;
+	else if ((!ft_strcmp(line, "sb") || !ft_strcmp(line, "ss")) )
+		PILEB = PILEB ? ft_swap(PILEB, PILEBNEX) : NULL;
+	else if (!ft_strcmp(line, "pa"))
 		ft_pusha(pile);
-	if (!ft_strcmp(line, "pb"))
+	else if (!ft_strcmp(line, "pb"))
 		ft_pushb(pile);
-	if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
+	else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rr"))
 		pile->pilea = ft_2listrotate(pile->pilea);
-	if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
+	else if (!ft_strcmp(line, "rb") || !ft_strcmp(line, "rr"))
 		pile->pileb = ft_2listrotate(pile->pileb);
-	if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrr"))
+	else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrr"))
 		pile->pilea = ft_2listrevrotate(pile->pilea);
-	if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
+	else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 		pile->pileb = ft_2listrevrotate(pile->pileb);
+	else if (ft_printf("Error\n") && !ft_memdel((void**)&line))
+		exit (-1);
 	return (pile);
 }
 
@@ -111,8 +143,6 @@ void		ft_readpsw(t_2pile *pile)
 	while (get_next_line(0, &line))
 	{
 		pile = ft_orders(line, pile);
-//		ft_printf("\n%s\n", line);
-//		ft_print_pile(pile);
 		ft_memdel((void**)&line);
 	}
 	ft_memdel((void**)&line);

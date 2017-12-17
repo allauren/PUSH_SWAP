@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 22:56:52 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 04:20:02 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_check_algo(t_2pile *pile, int i)
 {
 	if (i > 3 && ft_is_nfinish(PILEA, i - 2)
 			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
-			&& ft_2listtail(PILEA)->head->value < ft_2listhead(PILEA)->value 
+			&& ft_2listtail(PILEA)->head->value < ft_2listhead(PILEA)->value
 			&& ft_set_values("rra\n", 0) && ft_set_values("rra\n", 0))
 	{
 		PILEA = ft_2listrevrotate(PILEA);
@@ -27,14 +27,14 @@ void		ft_check_algo(t_2pile *pile, int i)
 			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
 			&& ft_set_values("rra\n", 0))
 		PILEA = ft_2listrevrotate(PILEA);
-	if(!(ft_is_finish(pile->pilea)))
+	if (!(ft_is_finish(pile->pilea)))
 	{
-	if (i < 4)
-		sort_smalla(pile, i);
-	else if (i > 6)
-		quick2sort(pile, 0, i);
-	else
-		sort_tillfif(pile, i);
+		if (i < 4)
+			sort_smalla(pile, i);
+		else if (i > 6)
+			quick2sort(pile, 0, i);
+		else
+			sort_tillfif(pile, i);
 	}
 	ft_set_values(NULL, -1);
 }
@@ -47,7 +47,7 @@ int			main(int argc, char *argv[])
 
 	i = ft_cut(argc, argv);
 	ft_bzero(&pile, sizeof(t_2pile));
-	if(!(tab = ft_memalloc(sizeof(int) * (i))))
+	if (!(tab = ft_memalloc(sizeof(int) * (i))))
 		ft_exit();
 	if (!ft_checker(argc, argv, tab) || argc < 2)
 	{
@@ -56,9 +56,9 @@ int			main(int argc, char *argv[])
 	}
 	pile.pilea = ft_fill(pile.pilea, tab, i);
 	ft_memdel((void**)&tab);
-	if(!(ft_is_finish(pile.pilea)))
+	if (!(ft_is_finish(pile.pilea)))
 		ft_check_algo(&pile, i);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
-	return 0;
+	return (0);
 }

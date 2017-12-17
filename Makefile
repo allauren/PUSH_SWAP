@@ -6,19 +6,19 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/16 23:56:54 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/17 00:54:55 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS1 =  doublelist.c list2del.c pushswapcommand.c \
 		push_check.c push_swap.c utilspsw.c quicksort.c \
 		utilpresort.c sort_small.c checkpsw.c push_check2.c \
-		short_sort.c smart_sort.c
+		short_sort.c smart_sort.c ft_optimizer.c
 SRCS2 =  checker.c doublelist.c list2del.c pushswapcommand.c \
 		push_check.c utilspsw.c quicksort.c\
-		utilpresort.c sort_small.c checkpsw.c push_check2.c
+		utilpresort.c sort_small.c checkpsw.c push_check2.c ft_optimizer.c
 CFLAGS =-g3 -c -Wall -Wextra -Werror
-FLAGS  = -g3  -Wall -Wextra -fsanitize=address
+FLAGS  = -g3  -Wall -Wextra -Werror# -fsanitize=address
 INCLUDES = INCLUDES
 CC = gcc
 LIBOPTIMIZER = ranlib

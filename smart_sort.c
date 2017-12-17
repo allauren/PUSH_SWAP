@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 03:17:32 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 09:39:20 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 01:33:29 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,19 @@ void		sort_smallb(t_2pile *pile, int size)
 	else
 		ft_sorti3(pile);
 }
-void	sort_tillfif(t_2pile *pile, int i)
+
+void		sort_tillfif(t_2pile *pile, int i)
 {
 	while (ft_2listsize(PILEB) < i / 2 && ft_set_values("pb\n", 0))
 		ft_pushb(pile);
 	sort_smallb(pile, ft_2listsize(PILEB));
 	sort_smalla(pile, ft_2listsize(PILEA));
-	while(PILEB || !ft_is_finish(PILEA))
+	while (PILEB || !ft_is_finish(PILEA))
 	{
-		if (PILEB && PILEAVAL > PILEBVAL 
-			&& (ft_is_finish(PILEA) || PILEBVAL > ft_2listtail(PILEA)->value)
-			&& ft_set_values("pa\n", 0))
+		if (PILEB && PILEAVAL > PILEBVAL
+				&& (ft_is_finish(PILEA)
+					|| PILEBVAL > ft_2listtail(PILEA)->value)
+				&& ft_set_values("pa\n", 0))
 			ft_pusha(pile);
 		else if (PILEB && PILEAVAL < ft_2listtail(PILEA)->value
 				&& PILEBVAL > ft_2listtail(PILEA)->value
@@ -75,8 +77,7 @@ void	sort_tillfif(t_2pile *pile, int i)
 			PILEA = ft_2listrotate(PILEA);
 		}
 		else if (ft_set_values("ra\n", 0))
-				PILEA = ft_2listrotate(PILEA);
-	//	ft_print_pile(pile);
+			PILEA = ft_2listrotate(PILEA);
 	}
 	ft_set_values(NULL, i);
 }

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 06:06:03 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 03:57:19 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void					ft_is_sort(t_2list *pilea);
 int						ft_is_nfinish(t_2list *pilea, int n);
 t_2pile					*ft_checkswapa(t_2pile *pile);
 t_2list					*ft_fill(t_2list *pilea, int *tab, int i);
+char					*ft_short_string(char *s, int taille, char *tmp);
 void					quick2sort(t_2pile *pile, int i, int taille);
 t_2list					*ft_2listrotate(t_2list *begin);
 t_2list					*ft_2listrevrotate(t_2list *begin);
@@ -81,6 +82,6 @@ void					ft_pusha(t_2pile *pile);
 void					ft_exit(void);
 int						ft_ispresent(int *tab, int i);
 t_2list					*ft_swap(t_2list *begin, t_2list *next);
-int						ft_checker(int argc, char **argv, int *tab);
+int						ft_checker(int argc, char **arg, int *tab);
 void					ft_print_pile(t_2pile *pile);
 #endif

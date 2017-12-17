@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:55:58 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 09:42:17 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 00:57:33 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_is_finish(t_2list *pilea)
 int		ft_is_nfinish(t_2list *pilea, int n)
 {
 	int		temp;
-	int i;
+	int		i;
 
 	i = 0;
 	while (pilea && pilea->next && ++i < n)
@@ -71,7 +71,7 @@ void	ft_find_opti(int lenb, t_2pile *pile, int *tab, int i)
 {
 	if (lenb)
 	{
-		while(i > 0 && tab[i - 1] && ft_is_nfinish(PILEA, tab[i - 1]))
+		while (i > 0 && tab[i - 1] && ft_is_nfinish(PILEA, tab[i - 1]))
 		{
 			while (tab[i - 1])
 			{
@@ -83,9 +83,9 @@ void	ft_find_opti(int lenb, t_2pile *pile, int *tab, int i)
 		}
 		if (i)
 		{
-		ft_reinit(pile, tab[i - 1]);
-		tab[i - 1] = 0;
-		ft_2sortb(pile, lenb, tab);
+			ft_reinit(pile, tab[i - 1]);
+			tab[i - 1] = 0;
+			ft_2sortb(pile, lenb, tab);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 08:10:37 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 00:52:42 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 04:04:20 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			main(int argc, char *argv[])
 	ft_bzero(&pile, sizeof(t_2pile));
 	if (!(tab = ft_memalloc(sizeof(int) * (i))))
 		ft_exit();
-	if (!ft_checker(argc, argv, tab) || argc < 2)
+	if (!ft_checker(argc, argv,tab) || argc < 2)
 	{
 		ft_memdel((void**)&tab);
 		ft_printf("Error\n");
@@ -33,6 +33,5 @@ int			main(int argc, char *argv[])
 	ft_readpsw(&pile);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
-
 	return (0);
 }
