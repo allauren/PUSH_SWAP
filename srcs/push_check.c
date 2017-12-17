@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 06:55:19 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 09:00:46 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_cleanstr(char *str)
 	int		i;
 
 	i = 0;
-	if (!(ret = ft_memalloc(ft_strlen(str) + 1)))
+	if (!(ret = ft_memalloc(ft_strlen(str) + 1)) && ft_memdel((void**)&str))
 		ft_exit();
 	if (str[i] == '-')
 		i++;
@@ -46,11 +46,11 @@ int			ft_checker(int i, char **argv, int *tab)
 		while (--k > -1)
 		{
 			if (!(tab[j] = ft_atoi(pab[k])) && !ft_fullzero(pab[k]))
-				return (0);
+				return (ft_return(pab[k], pab));
 			if (!ft_ispresent(tab, j) || ft_atoi(pab[k]) > 2147483647
 					|| ft_atoi(pab[k]) < -2147483648 || (tab[j] && pab[k]
 					&& ft_strlen((pab[k] = ft_cleanstr(pab[k]))) > 10))
-				return (0);
+				return (ft_return(pab[k], pab));
 			j += 1 + ft_memdel((void**)&pab[k]);
 		}
 		free(pab);
@@ -103,7 +103,11 @@ t_2pile		*ft_orders(char *line, t_2pile *pile)
 	else if (!ft_strcmp(line, "rrb") || !ft_strcmp(line, "rrr"))
 		pile->pileb = ft_2listrevrotate(pile->pileb);
 	else if (ft_printf("Error\n") && !ft_memdel((void**)&line))
+	{
+		ft_2lstdelall(PILEA);
+		ft_2lstdelall(PILEB);
 		exit(-1);
+	}
 	return (pile);
 }
 

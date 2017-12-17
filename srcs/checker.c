@@ -6,11 +6,17 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 08:10:37 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 06:41:47 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 08:40:32 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	ft_usage(void)
+{
+	ft_printf("usage: ./checker valid input numbers\n");
+	return (-1);
+}
 
 int			main(int argc, char *argv[])
 {
@@ -18,6 +24,8 @@ int			main(int argc, char *argv[])
 	int			*tab;
 	int			i;
 
+	if (argc < 2)
+		return (ft_usage());
 	i = ft_cut(argc, argv);
 	ft_bzero(&pile, sizeof(t_2pile));
 	if (!(tab = ft_memalloc(sizeof(int) * (i))))

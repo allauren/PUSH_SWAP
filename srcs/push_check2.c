@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 07:10:01 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 06:55:26 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 08:31:13 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void		ft_exit(void)
 {
 	ft_alexis();
 	exit(-1);
+}
+
+int			ft_return(char *str, char **p)
+{
+	ft_strdel(&str);
+	free(p);
+	return (0);
 }
 
 void		ft_is_sort(t_2list *pilea)

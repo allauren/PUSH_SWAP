@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 04:20:02 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 08:40:21 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,20 @@ void		ft_check_algo(t_2pile *pile, int i)
 	ft_set_values(NULL, -1);
 }
 
+static int	ft_usage(void)
+{
+	ft_printf("usage: ./push_swap valid input numbers\n");
+	return (-1);
+}
+
 int			main(int argc, char *argv[])
 {
 	t_2pile		pile;
 	int			*tab;
 	int			i;
 
+	if (argc < 2)
+		return (ft_usage());
 	i = ft_cut(argc, argv);
 	ft_bzero(&pile, sizeof(t_2pile));
 	if (!(tab = ft_memalloc(sizeof(int) * (i))))
