@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 08:10:37 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 08:40:32 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:40:52 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			main(int argc, char *argv[])
 	pile.pilea = ft_fill(pile.pilea, tab, i);
 	ft_memdel((void**)&tab);
 	ft_readpsw(&pile);
+//	ft_print_pile(pile.pilea, pile.pileb, 0);
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
 	return (0);

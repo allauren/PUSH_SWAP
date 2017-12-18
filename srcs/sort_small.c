@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:32:25 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/16 22:49:55 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:40:29 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 t_2pile		*ft_checkswapb(t_2pile *pile)
 {
+//	if (ft_2listhead(PILEA)->value > ft_2listhead(PILEA)->next->value
+//			&& PILEBVAL < PILEBNEX->value && ft_set_values("ss\n", 0))
+//	{
+//		PILEA = ft_swap(PILEA, PILEANEX);
+//		PILEB = ft_swap(PILEB, PILEBNEX);
+//	}
 	if (PILEBVAL < PILEBNEX->value && ft_set_values("sb\n", 0))
 		PILEB = ft_swap(PILEB, PILEBNEX);
 	return (pile);
@@ -21,6 +27,7 @@ t_2pile		*ft_checkswapb(t_2pile *pile)
 
 int			ft_pushrota(t_2pile *pile, int len)
 {
+
 	while (PILEB && ft_set_values("pa\n", 0))
 		ft_pusha(pile);
 	while (len-- && ft_set_values("ra\n", 0))

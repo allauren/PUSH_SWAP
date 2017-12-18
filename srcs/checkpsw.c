@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:55:58 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 00:57:33 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 18:27:43 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_find_opti(int lenb, t_2pile *pile, int *tab, int i)
 		}
 		if (i)
 		{
-			ft_reinit(pile, tab[i - 1]);
+			lenb -= ft_reinit(pile, tab[i - 1]);
 			tab[i - 1] = 0;
 			ft_2sortb(pile, lenb, tab);
 		}

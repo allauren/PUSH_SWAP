@@ -6,20 +6,11 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:07:17 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 06:55:32 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/17 16:31:55 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	printdixtab(int *a)
-{
-	int j;
-
-	j = -1;
-	while (++j <= 8)
-		ft_printf("tab[%d] =%5d\n", j, a[j]);
-}
 
 int		*ft_concattab(int *tab, t_2list *pile)
 {

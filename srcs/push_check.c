@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 09:00:46 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:00:11 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,30 +58,26 @@ int			ft_checker(int i, char **argv, int *tab)
 	return (1);
 }
 
-void		ft_print_pile(t_2pile *pile)
+void		ft_print_pile(t_2list *pilea, t_2list *pileb, int i)
 {
-	pile->pilea = ft_2listhead(pile->pilea);
-	pile->pileb = ft_2listhead(pile->pileb);
-	ft_printf("PILEA\n");
-	while (pile->pilea)
-	{
-		ft_printf("%d\n", pile->pilea->value);
-		if (pile->pilea->next)
-			pile->pilea = pile->pilea->next;
-		else
-			break ;
-	}
-	ft_printf("PILEB\n");
-	while (pile->pileb)
-	{
-		ft_printf("%d\n", pile->pileb->value);
-		if (pile->pileb->next)
-			pile->pileb = pile->pileb->next;
-		else
-			break ;
-	}
-	pile->pilea = ft_2listhead(pile->pilea);
-	pile->pileb = ft_2listhead(pile->pileb);
+	if (!i)
+	ft_printf("   PILEA    \t   PILEB   \n");
+	if (!pileb && !pilea)
+		ft_printf("         FIN DES PILES        ");
+	if (pilea) 
+		ft_printf("%6d\t", pilea->value);
+	else
+		ft_printf("           " );
+	if (pileb) 
+		ft_printf("\t%6d\n", pileb->value);
+	else 
+		ft_printf("\t\t           \n" );
+	if (pileb && pileb->next && pilea && pilea->next)
+		ft_print_pile(pilea->next, pileb->next, 1);
+	else if (pileb && pileb->next)
+		ft_print_pile(NULL, pileb->next, 1);
+	else if (pilea && pilea->next)
+		ft_print_pile(pilea->next, NULL, 1);
 }
 
 t_2pile		*ft_orders(char *line, t_2pile *pile)
