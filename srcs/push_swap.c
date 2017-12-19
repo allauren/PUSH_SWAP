@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 02:38:41 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 03:59:24 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_check_algo(t_2pile *pile, int i)
 {
-/*	if (i > 3 && ft_is_nfinish(PILEA, i - 2)
+	if (i > 3 && ft_is_nfinish(pile, i - 2)
 			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
 			&& ft_2listtail(PILEA)->head->value < ft_2listhead(PILEA)->value
 			&& ft_set_values("rra\n", 0) && ft_set_values("rra\n", 0))
@@ -23,10 +23,10 @@ void		ft_check_algo(t_2pile *pile, int i)
 		PILEA = ft_2listrevrotate(PILEA);
 		pile = ft_checkswapa(pile);
 	}
-	if (i > 3 && ft_is_nfinish(PILEA, i - 1)
+	if (i > 3 && ft_is_nfinish(pile, i - 1)
 			&& ft_2listtail(PILEA)->value < ft_2listhead(PILEA)->value
 			&& ft_set_values("rra\n", 0))
-		PILEA = ft_2listrevrotate(PILEA);*/
+		PILEA = ft_2listrevrotate(PILEA);
 	if (!(ft_is_finish(pile->pilea)))
 	{
 		if (i < 4)

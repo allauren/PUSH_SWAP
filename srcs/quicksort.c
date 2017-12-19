@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:51:35 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 02:38:42 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 03:59:25 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ void	ft_2sortb(t_2pile *pile, int lenb, int *tab)
 		i++;
 	if (len > 3 && !ft_is_reverse(PILEB))
 	{
-		lenb -= ft_partitionb(pile, ft_find_pivot(PILEB, len, 2), len);
+		ft_print_pile(PILEA, PILEB, 0);
+		lenb -= ft_partitionb(pile, ft_find_pivot(PILEB, len, 4), len);
 		tab[i] = ft_2listsize(PILEA) - lena - check + lenb;
 		ft_2sortb(pile, lenb, tab);
 	}
