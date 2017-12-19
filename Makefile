@@ -6,7 +6,7 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/17 07:58:48 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/19 00:37:52 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ SRCS2 = $(SRCREP)/checker.c $(SRCREP)/doublelist.c $(SRCREP)/list2del.c\
 		$(SRCREP)/checkpsw.c $(SRCREP)/push_check2.c $(SRCREP)/ft_optimizer.c
 
 INCLUDES = includes
-CFLAGS = -c -Wall -Wextra -Werror -I$(INCLUDES) -Ilib
-LFLAGS  = -L lib/ -lft
+CFLAGS = -c -g3 -Wall -Wextra -Werror -I$(INCLUDES) -Ilib
+LFLAGS  = -L lib/ -lft -g3
 SRCREP = srcs
 CC = gcc
 OBJS1 = $(SRCS1:.c=.o)

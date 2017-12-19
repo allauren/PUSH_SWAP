@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:55:58 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 18:27:43 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 02:38:40 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ int		ft_is_finish(t_2list *pilea)
 	return (1);
 }
 
-int		ft_is_nfinish(t_2list *pilea, int n)
+int		ft_is_nfinish(t_2pile *pile, int n)
 {
 	int		temp;
-	int		i;
 
-	i = 0;
-	while (pilea && pilea->next && ++i < n)
+	PILEA = ft_2listhead(PILEA);
+	while (PILEA && PILEA->next && n--)
 	{
-		temp = pilea->value;
-		if (pilea->next)
+		temp = PILEA->value;
+		if (PILEA->next)
 		{
-			pilea = pilea->next;
-			if (temp > pilea->value)
+			PILEA = PILEA->next;
+			if (temp > PILEA->value)
 			{
+				PILEA = ft_2listhead(PILEA);
 				return (0);
 			}
 		}
@@ -71,7 +71,8 @@ void	ft_find_opti(int lenb, t_2pile *pile, int *tab, int i)
 {
 	if (lenb)
 	{
-		while (i > 0 && tab[i - 1] && ft_is_nfinish(PILEA, tab[i - 1]))
+		PILEA = ft_2listhead(PILEA);
+		while (i > 0 && tab[i - 1] && ft_is_nfinish(pile, tab[i - 1]))
 		{
 			while (tab[i - 1])
 			{

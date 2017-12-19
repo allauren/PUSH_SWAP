@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/18 13:39:49 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 00:56:53 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int						ft_2listsize(t_2list *begin);
 int						ft_cut(int ac, char **av);
 void					sort_smalla(t_2pile *pile, int size);
 void					ft_is_sort(t_2list *pilea);
-int						ft_is_nfinish(t_2list *pilea, int n);
+int						ft_is_nfinish(t_2pile *pilea, int n);
 t_2pile					*ft_checkswapa(t_2pile *pile);
 t_2list					*ft_fill(t_2list *pilea, int *tab, int i);
 char					*ft_short_string(char *s, int taille, char *tmp);

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:37:23 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/15 06:13:20 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 01:13:36 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			ft_2listsize(t_2list *begin)
 	begin = ft_2listhead(begin);
 	while (begin && begin->next && ++i)
 		begin = begin->next;
-	return (++i);
+	return (begin ? ++i : i);
 }
 
 t_2list		*ft_2listfront(t_2list *begin, t_2list *new)
