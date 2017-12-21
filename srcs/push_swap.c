@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 04:07:26 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:38:15 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ int			main(int argc, char *argv[])
 	t_2pile		pile;
 	int			*tab;
 	int			i;
+	t_2option	s;
 
 	if (argc < 2)
 		return (ft_usage());
-	i = ft_cut(argc, argv);
+	i = ft_cut(argc, argv, &s);
 	ft_bzero(&pile, sizeof(t_2pile));
 	if (!(tab = ft_memalloc(sizeof(int) * (i))))
 		ft_exit();
-	if (!ft_checker(argc, argv, tab) || argc < 2)
+	if (!ft_checker(argc, argv, tab, &s) || argc < 2)
 	{
 		ft_memdel((void**)&tab);
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 13:02:40 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/21 06:15:08 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:42:29 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ t_2list		*ft_fill(t_2list *pilea, int *tab, int i)
 		pilea = ft_2listfront(pilea, ft_2list_new(tab[j], j + 1));
 	}
 	return (pilea);
-}
-
-int		ft_check_option(t_2option *s, char **av)
-{
-	if (ft_strcmp(av[1], "-v"))
-		return (1);
-	s->v = 1;
-	return (2);
 }
 
 int			ft_cut(int ac, char **av, t_2option *s)
