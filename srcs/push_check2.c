@@ -6,14 +6,13 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 07:10:01 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/21 05:29:23 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:48:48 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int ft_is(char *str)
+int			ft_is(char *str)
 {
 	int i;
 
