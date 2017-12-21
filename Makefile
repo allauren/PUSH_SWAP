@@ -6,7 +6,7 @@
 #    By: allauren <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:27:21 by allauren          #+#    #+#              #
-#    Updated: 2017/12/19 00:37:52 by allauren         ###   ########.fr        #
+#    Updated: 2017/12/20 16:32:14 by allauren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,13 @@ SRCS1 = $(SRCREP)/doublelist.c $(SRCREP)/list2del.c $(SRCREP)/pushswapcommand.c\
 		$(SRCREP)/push_check.c $(SRCREP)/push_swap.c $(SRCREP)/utilspsw.c\
 		$(SRCREP)/quicksort.c $(SRCREP)/utilpresort.c $(SRCREP)/sort_small.c\
 		$(SRCREP)/checkpsw.c $(SRCREP)/push_check2.c $(SRCREP)/short_sort.c \
-		$(SRCREP)/smart_sort.c $(SRCREP)/ft_optimizer.c
+		$(SRCREP)/smart_sort.c $(SRCREP)/ft_optimizer.c $(SRCREP)/ft_minvalues.c\
+		$(SRCREP)/ft_exit.c
 SRCS2 = $(SRCREP)/checker.c $(SRCREP)/doublelist.c $(SRCREP)/list2del.c\
 		$(SRCREP)/pushswapcommand.c $(SRCREP)/push_check.c $(SRCREP)/utilspsw.c\
 		$(SRCREP)/quicksort.c $(SRCREP)/utilpresort.c $(SRCREP)/sort_small.c\
-		$(SRCREP)/checkpsw.c $(SRCREP)/push_check2.c $(SRCREP)/ft_optimizer.c
-
+		$(SRCREP)/checkpsw.c $(SRCREP)/push_check2.c $(SRCREP)/ft_optimizer.c\
+		$(SRCREP)/ft_minvalues.c $(SRCREP)/ft_exit.c
 INCLUDES = includes
 CFLAGS = -c -g3 -Wall -Wextra -Werror -I$(INCLUDES) -Ilib
 LFLAGS  = -L lib/ -lft -g3

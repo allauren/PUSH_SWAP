@@ -6,23 +6,24 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 07:10:01 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 08:31:13 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:29:23 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_exit(void)
-{
-	ft_alexis();
-	exit(-1);
-}
 
-int			ft_return(char *str, char **p)
+int ft_is(char *str)
 {
-	ft_strdel(&str);
-	free(p);
-	return (0);
+	int i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9') && i != 0)
+			return (0);
+	}
+	return (1);
 }
 
 void		ft_is_sort(t_2list *pilea)
@@ -67,6 +68,10 @@ int			ft_fullzero(char *str)
 	int i;
 
 	i = -1;
+	if (!str)
+		return (0);
+	if (str[0] == '-' || str[0] == '+')
+		i++;
 	while (str[++i])
 		if (str[i] != '0')
 			return (0);

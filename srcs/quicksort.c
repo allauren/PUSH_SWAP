@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 15:51:35 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 03:59:25 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/20 18:24:34 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,104 +14,43 @@
 
 int		ft_partitiona(t_2pile *pile, int key, int size)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	PILEA = ft_2listhead(PILEA);
 	while (PILEA && ++i < size)
-		if (PILEAVAL < key && ft_set_values("pb\n", 0))
+		if (PILEAVAL <= key && ft_set_values("pb\n", 0))
 			ft_pushb(pile);
 		else if (ft_set_values("ra\n", 0))
 			PILEA = ft_2listrotate(PILEA);
 	return (key);
 }
 
-int		ft_is_minb(t_2pile *pile, int len)
+int		ft_partitionb(t_2pile *pile, int key, int size, int i)
 {
-	int value;
-	int i;
+	int		count;
+	int		pa;
 
-	i = 0;
-	PILEB = ft_2listhead(PILEB);
-	value = PILEB->value;
-	PILEA = ft_2listhead(PILEA);
-	while (i < len && PILEA->next)
-	{
-		if (PILEAVAL < value)
-			return(0);
-		PILEA = PILEANEX;
-		i++;
-	}
-	PILEA = ft_2listhead(PILEA);
-	while (PILEB && ft_2listhead(PILEB)->next)
-	{
-		if (PILEBVAL < value)
-		{
-	PILEB = ft_2listhead(PILEB);
-			return (0);
-		}
-		if (PILEBNEX)
-		PILEB = PILEBNEX;
-		else
-			break ;
-	}
-	PILEB = ft_2listhead(PILEB);
-	return (1);
-}
-
-int		ft_partitionb(t_2pile *pile, int key, int size)
-{
-	int		i;
-	int count;
-	int	pa = 0;
-
-	i = 0;
+	pa = 0;
 	count = 0;
 	PILEB = ft_2listhead(PILEB);
 	while (++i <= size)
 	{
-		if (ft_is_minb(pile, pa) && ft_set_values("pa\nra\n", 0))
-				{
-					ft_pusha(pile);
-					PILEA = ft_2listrotate(PILEA);
-					count++;
-				}
+		if (ft_is_minb(pile, pa, 0, ft_2listhead(PILEB)->value)
+				&& ft_set_values("pa\nra\n", 0))
+		{
+			ft_pusha(pile);
+			PILEA = ft_2listrotate(PILEA);
+			count++;
+		}
 		else if (PILEBVAL <= key && ft_set_values("rb\n", 0))
 		{
 			PILEB = ft_2listrotate(PILEB);
-		
 		}
 		else if (ft_set_values("pa\n", 0) && ++pa)
 			ft_pusha(pile);
 	}
 	return (count);
-}
-
-int		ft_is_min(t_2pile *pile, int len, int value)
-{
-	int i;
-
-	i = 0;
-	PILEA = PILEANEX;
-	while (i < len && PILEA->next)
-	{
-		if (PILEAVAL < value)
-			return(0);
-		PILEA = PILEANEX;
-		i++;
-	}
-	while (PILEB)
-	{
-		if (PILEBVAL < value)
-			return (0);
-		if (PILEBNEX)
-		PILEB = PILEBNEX;
-		else
-			break ;
-	}
-	PILEB = ft_2listhead(PILEB);
-	PILEA = ft_2listhead(PILEA);
-	return (1);
 }
 
 int		ft_reinit(t_2pile *pile, int len)
@@ -125,10 +64,10 @@ int		ft_reinit(t_2pile *pile, int len)
 		if (ft_is_min(pile, len, PILEAVAL)
 				&& ft_set_values("ra\n", 0) && ((j += 1) + 1))
 			PILEA = ft_2listrotate(PILEA);
-		else if(ft_set_values("pb\n", 0))
+		else if (ft_set_values("pb\n", 0))
 			ft_pushb(pile);
 	}
-	return(j);
+	return (j);
 }
 
 void	ft_2sortb(t_2pile *pile, int lenb, int *tab)
@@ -146,8 +85,7 @@ void	ft_2sortb(t_2pile *pile, int lenb, int *tab)
 		i++;
 	if (len > 3 && !ft_is_reverse(PILEB))
 	{
-		ft_print_pile(PILEA, PILEB, 0);
-		lenb -= ft_partitionb(pile, ft_find_pivot(PILEB, len, 4), len);
+		lenb -= ft_partitionb(pile, ft_find_pivot(PILEB, len, 2), len, 0);
 		tab[i] = ft_2listsize(PILEA) - lena - check + lenb;
 		ft_2sortb(pile, lenb, tab);
 	}

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:25:22 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 00:56:53 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 06:16:01 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,30 @@ typedef struct			s_2pile
 	t_2list				*pileb;
 }						t_2pile;
 
+typedef struct			s_2option
+{
+	int					v;
+}						t_2option;
+
+int						ft_is(char *str);
 int						ft_return(char *str, char **s);
 void					sort_tillfif(t_2pile *pile, int i);
+int						ft_is_min(t_2pile *pile, int len, int value);
+int						ft_is_minb(t_2pile *pile, int len, int i, int value);
 int						ft_is_reverse(t_2list *pile);
 void					ft_2lstdelall(t_2list *begin);
 int						ft_set_values(char *str, int taille);
 int						ft_is_finish(t_2list *pilea);
 int						ft_2listsize(t_2list *begin);
-int						ft_cut(int ac, char **av);
+int						ft_cut(int ac, char **av, t_2option *s);
+int						ft_check_option(t_2option *s, char **av);
 void					sort_smalla(t_2pile *pile, int size);
 void					ft_is_sort(t_2list *pilea);
 int						ft_is_nfinish(t_2pile *pilea, int n);
 t_2pile					*ft_checkswapa(t_2pile *pile);
 t_2list					*ft_fill(t_2list *pilea, int *tab, int i);
 char					*ft_short_string(char *s, int taille, char *tmp);
-int			ft_pushrota(t_2pile *pile, int len);
+int						ft_pushrota(t_2pile *pile, int len);
 void					quick2sort(t_2pile *pile, int i, int taille);
 t_2list					*ft_2listrotate(t_2list *begin);
 t_2list					*ft_2listrevrotate(t_2list *begin);
@@ -65,7 +74,7 @@ t_2list					*ft_2listndel(t_2list *begin, int n);
 void					ft_2listdel(t_2list *begin);
 t_2list					*ft_2listfront(t_2list *begin, t_2list *ew);
 int						*ft_insertformed(int *tab, int len);
-void					ft_readpsw(t_2pile *pile);
+void					ft_readpsw(t_2pile *pile, t_2option *s);
 int						*ft_concattab(int *tab, t_2list *pile);
 void					insertion_sort(t_2pile *pile, int taille);
 int						*ft_concattab(int *tab, t_2list *pile);
@@ -81,11 +90,11 @@ void					ft_pushb(t_2pile *pile);
 int						ft_fullzero(char *str);
 int						ft_ispresent(int *tab, int i);
 void					ft_find_opti(int lenb, t_2pile *pile, int *tab, int i);
-int					ft_reinit(t_2pile *pile, int len);
+int						ft_reinit(t_2pile *pile, int len);
 void					ft_pusha(t_2pile *pile);
 void					ft_exit(void);
 int						ft_ispresent(int *tab, int i);
-void		ft_print_pile(t_2list *pilea, t_2list *pileb, int i);
+void					ft_print_pile(t_2list *pilea, t_2list *pileb, int i);
 t_2list					*ft_swap(t_2list *begin, t_2list *next);
-int						ft_checker(int argc, char **arg, int *tab);
+int						ft_checker(int argc, char **arg, int *tab, t_2option *s);
 #endif

@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 13:02:40 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 16:49:11 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 06:15:08 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ t_2list		*ft_fill(t_2list *pilea, int *tab, int i)
 	return (pilea);
 }
 
-int			ft_cut(int ac, char **av)
+int		ft_check_option(t_2option *s, char **av)
+{
+	if (ft_strcmp(av[1], "-v"))
+		return (1);
+	s->v = 1;
+	return (2);
+}
+
+int			ft_cut(int ac, char **av, t_2option *s)
 {
 	int		i;
 	int		j;
@@ -34,7 +42,7 @@ int			ft_cut(int ac, char **av)
 	pab = NULL;
 	i = ac;
 	j = 0;
-	while (--i >= 1 && ((k = 0) + 1))
+	while (--i >= ft_check_option(s, av) && ((k = 0) + 1))
 	{
 		if (!(pab = ft_strsplit(av[i], ' ')))
 		{

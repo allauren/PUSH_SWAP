@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:07:17 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/17 16:31:55 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 05:58:29 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_find_pivot(t_2list *pile, int len, int div)
 		ft_exit();
 	tab = ft_concattab(tab, pile);
 	tab = ft_insertformed(tab, len);
-	key = tab[len / div];
+	key = tab[len / div - 1];
 	ft_memdel((void**)&tab);
 	return (key);
 }

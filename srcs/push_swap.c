@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:38:24 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/19 03:59:24 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/19 04:07:26 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_check_algo(t_2pile *pile, int i)
 		if (i < 4)
 			sort_smalla(pile, i);
 		else if (i > 6)
-		quick2sort(pile, 0, i);
+			quick2sort(pile, 0, i);
 		else
 			sort_tillfif(pile, i);
 	}
@@ -66,9 +66,6 @@ int			main(int argc, char *argv[])
 	ft_memdel((void**)&tab);
 	if (!(ft_is_finish(pile.pilea)))
 		ft_check_algo(&pile, i);
-//	ft_print_pile(pile.pilea, pile.pileb, 0);
-//	if(ft_is_finish(pile.pilea))
-//		ft_printf("algo a bien trie");
 	ft_2lstdelall(pile.pilea);
 	ft_2lstdelall(pile.pileb);
 	return (0);

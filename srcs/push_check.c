@@ -6,7 +6,7 @@
 /*   By: allauren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:30:42 by allauren          #+#    #+#             */
-/*   Updated: 2017/12/18 21:47:18 by allauren         ###   ########.fr       */
+/*   Updated: 2017/12/21 16:26:43 by allauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,30 @@ char		*ft_cleanstr(char *str)
 	return (ret);
 }
 
-int			ft_checker(int i, char **argv, int *tab)
+int			ft_checker(int i, char **argv, int *tab, t_2option *s)
 {
 	int		j;
 	int		k;
 	char	**pab;
 
 	j = 0;
-	while (--i >= 1 && ((pab = NULL) + 1))
+	while (--i >= ft_check_option(s, argv) && ((pab = NULL) + 1))
 	{
 		if (((k = 0) + 1)
 				&& !(pab = ft_strsplit(argv[i], ' ')))
 			ft_exit();
+		if (!pab[0])
+			return (0);
 		while (pab[k])
 			k++;
 		while (--k > -1)
 		{
-			if (!(tab[j] = ft_atoi(pab[k])) && !ft_fullzero(pab[k]))
+			if ((!(tab[j] = ft_atoi(pab[k])) && !ft_fullzero(pab[k])) 
+					|| !ft_is(pab[k]))
 				return (ft_return(pab[k], pab));
 			if (!ft_ispresent(tab, j) || ft_atoi(pab[k]) > 2147483647
 					|| ft_atoi(pab[k]) < -2147483648 || (tab[j] && pab[k]
-					&& ft_strlen((pab[k] = ft_cleanstr(pab[k]))) > 10))
+						&& ft_strlen((pab[k] = ft_cleanstr(pab[k]))) > 10))
 				return (ft_return(pab[k], pab));
 			j += 1 + ft_memdel((void**)&pab[k]);
 		}
@@ -61,17 +64,17 @@ int			ft_checker(int i, char **argv, int *tab)
 void		ft_print_pile(t_2list *pilea, t_2list *pileb, int i)
 {
 	if (!i)
-	ft_printf("   PILEA    \t   PILEB   \n");
+		ft_printf("   PILEA    \t   PILEB   \n");
 	if (!pileb && !pilea)
 		ft_printf("         FIN DES PILES        ");
-	if (pilea) 
+	if (pilea)
 		ft_printf("%6d\t", pilea->value);
 	else
-		ft_printf("           " );
-	if (pileb) 
+		ft_printf("           ");
+	if (pileb)
 		ft_printf("\t%6d\n", pileb->value);
-	else 
-		ft_printf("\t\t           \n" );
+	else
+		ft_printf("\t\t           \n");
 	if (pileb && pileb->next && pilea && pilea->next)
 		ft_print_pile(pilea->next, pileb->next, 1);
 	else if (pileb && pileb->next)
@@ -80,7 +83,7 @@ void		ft_print_pile(t_2list *pilea, t_2list *pileb, int i)
 		ft_print_pile(pilea->next, NULL, 1);
 }
 
-t_2pile		*ft_orders(char *line, t_2pile *pile)
+t_2pile		*ft_orders(char *line, t_2pile *pile, t_2option *s)
 {
 	if ((!ft_strcmp(line, "sa") || !ft_strcmp(line, "ss")))
 		PILEA = PILEA ? ft_swap(PILEA, PILEANEX) : NULL;
@@ -104,17 +107,19 @@ t_2pile		*ft_orders(char *line, t_2pile *pile)
 		ft_2lstdelall(PILEB);
 		exit(-1);
 	}
+	if (s->v)
+		ft_print_pile(PILEA, PILEB, 0);
 	return (pile);
 }
 
-void		ft_readpsw(t_2pile *pile)
+void		ft_readpsw(t_2pile *pile, t_2option *s)
 {
 	char		*line;
 
 	line = NULL;
 	while (get_next_line(0, &line))
 	{
-		pile = ft_orders(line, pile);
+		pile = ft_orders(line, pile, s);
 		ft_memdel((void**)&line);
 	}
 	ft_memdel((void**)&line);
